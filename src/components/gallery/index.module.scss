@@ -1,0 +1,139 @@
+.gallery {
+    width: 91%;
+    margin: auto; 
+    margin-top: 100px;
+}  
+
+.container {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 40px;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+}
+
+.first {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 40px;
+    grid-template-rows:  1fr 1fr; 
+    grid-template-areas: "b1 b1 b2 b3 b4 b4"
+                         "b1 b1 b2 b5 b4 b4"; 
+    // width: 91%;                   
+}  
+
+.second {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 40px;
+    grid-template-rows:  1fr 1fr; 
+    // grid-template-areas: "a1 a2 a3 a3 a4 a4"
+    //                      "a1 a6 a6 a7 a4 a4";  
+    grid-template-areas: "a1 a1 a2 a3 a4 a4"
+                         "a1 a1 a2 a5 a4 a4"; 
+    // border: 2px solid red;   
+    // width: 91%;        
+}
+
+#b1 {
+    grid-area: b1;
+}
+
+#b2 {
+    grid-area: b2;
+}
+ 
+#b3 {
+    grid-area: b3;
+}  
+
+#b4 {
+    grid-area: b4;
+}
+
+#b5 {
+    grid-area: b5;
+}   
+
+
+#a1 {
+    grid-area: a1;
+}
+
+#a2 {
+    grid-area: a2;
+}
+ 
+#a3 {
+    grid-area: a3;
+}  
+
+#a4 {
+    grid-area: a4;
+}
+
+#a5 {
+    grid-area: a5;
+}  
+
+#a6 {
+    grid-area: a6;
+} 
+
+#a7 {
+    grid-area: a7;
+}
+
+.gallery_title {
+    font-size: 30px;
+    font-family: georgia;  
+    color: #313131;
+    text-transform: capitalize;
+    margin-bottom: 50px;
+} 
+
+.gallery_block {
+    width: 100%;
+    height: 100%;
+} 
+
+@media screen and (max-width: 576px) { 
+    .first {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        grid-template-rows:  1fr 1fr; 
+        grid-template-areas: "b1 b3"
+                             "b1 b2"
+        //                      "b1 b3" 
+        //                      "b4 b4" 
+        //                      "b4 b4"; 
+    }  
+
+    #b1 {
+        grid-area: b1;
+    }
+    
+    #b2 {
+        grid-area: b2;
+    }
+     
+    #b3 {
+        grid-area: b3;
+        // display: none;
+    }  
+    
+    #b4 {
+        grid-area: b4;
+        display: none;
+    } 
+
+    #b5 {
+        display: none;
+    }
+
+    .second {
+        display: none;
+    }
+}

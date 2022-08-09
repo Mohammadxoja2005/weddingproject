@@ -1,0 +1,86 @@
+.hero {
+    width: 100%; 
+} 
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin: auto;
+    background: url("../../assets/images/hero.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+} 
+
+.carousel_element {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 224px 0 165px 0; 
+} 
+
+.carousel_title {
+    max-width: 746px;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    font-family: georgia;
+    font-weight: 400;
+    margin-bottom: 183px;
+} 
+
+.btn {
+    color: white; 
+    border: 2px solid white;
+    padding: 15px 90px;   
+    border-radius: 20px;
+    cursor: pointer;
+} 
+
+
+// carousel part 
+
+.products_dot {
+    display: none;
+} 
+
+.next_btn {
+    background-color: transparent !important;
+    // position: absolute;
+    margin-right: 80px;
+} 
+
+.prev_btn {
+    background-color: transparent !important;
+    // position: absolute;
+    margin-left: 80px;
+    // top: 50% !important; 
+    // transform: translate(-50%, -50%);
+} 
+
+@media screen and (max-width: 992px) {
+    .carousel_title {
+        font-size: 38px;
+    }
+} 
+
+@media screen and (max-width: 768px) {
+    .carousel_title {
+        font-size: 29px;
+    } 
+
+    .next_btn  {
+        display: none;
+    } 
+
+    .prev_btn {
+        display: none;
+    }
+}  
+
+@media screen and (max-width: 576px) {
+    .carousel_title {
+        font-size: 22px;
+    }
+}  
