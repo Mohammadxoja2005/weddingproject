@@ -77,7 +77,7 @@ function Home() {
     <div className={styles.container}>    
 
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>   
-     <ChangeModal/>  
+    <ChangeModal />  
     </Modal>
 
      <Navbar isOpen={isOpen} setIsOpen={setIsOpen} setOrder={setOrder}/> 
