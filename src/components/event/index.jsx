@@ -96,7 +96,7 @@ function Event() {
 
                     {/* <img src={Slider} className={styles.img_pos}/>   */}
                     <div className={styles.event_des} id="eventdes">
-                      <h3>Свадьба</h3>
+                      <h3 className={styles.event_des_title} >Свадьба</h3>
                     </div>
                     </div>
                   </SwiperSlide> 
@@ -128,7 +128,7 @@ function Event() {
 
                     {/* <img src={Slider} className={styles.img_pos}/>   */}
                     <div className={styles.event_des} id="eventdes">
-                      <h3>Свадьба</h3>
+                    <h3 className={styles.event_des_title} >Свадьба</h3>
                     </div>
                     </div>
                   </SwiperSlide> 

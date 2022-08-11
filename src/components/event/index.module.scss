@@ -97,5 +97,10 @@
 
 // .next_btn {
 //     display: none ;
-// }  
+// }   
 
+@media screen and (max-width: 576px){
+    .event_des_title {
+        font-size: 25px;
+    }
+ }
