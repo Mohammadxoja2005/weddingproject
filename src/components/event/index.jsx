@@ -1,6 +1,7 @@
 import React, { useEffect, useState} from 'react'
 import styles from "./index.module.scss"; 
-import Slider from "../../assets/images/slider.png";   
+import Slider from "../../assets/images/slider.png";
+import Fetch from '../../hooks/Fetch';   
 import { Swiper, SwiperSlide } from 'swiper/react'; 
 import { EffectCoverflow, Pagination } from "swiper";
 import Circle from "../../assets/images/circle.png"; 
@@ -46,10 +47,10 @@ function Event() {
     loop: true, 
   }   
 
-  
+  const data = Fetch('http://172.105.76.9:8000/service/event/');  
+  const [isChosen, setIsChosen] = useState(false); 
 
   useEffect(() =>{ 
-  
     const swiperSlideActive = document.querySelector(".swiper-slide-active"); 
     const swiperSlides = document.querySelectorAll(".swiper-slide");
     const sliderImg = document.querySelectorAll(".img_change");   
@@ -59,17 +60,26 @@ function Event() {
     const imgCircle = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAALQSURBVHgBxVdBUhpREO3uEaQ0VTE3ICcQT4CewHGhYDbBE2iWMaQyVqIuxROomwhsHE4gnkC8weQGZBEDDvM73ZOCmkiCQJjxVQFT/D/9pv///foNwhiwnbOljJXJMaDNhHkEzALw0u9RbMt1CwzfyXiz/rHgjhMTnyJMp1/sIvMesGkBkmsB3Nz7PzzX2Wn/8VBkLcscGxCzjHROD72LqrPtTUxcOK7vggEHwLjo88GoIFEUjy+zEIAj5HlGcOr7hYuxiQtHtRNgsC3Aja8ftlowBfQB2NC1MLi1/cK7x+M0RHpYP0NjXnX9+5VpSRXV99te10+vyGVWY46crJnK5wpmjOKX2nm4ihEMMi4eXpZ0ebsP9zswY3R66T2NvXVU3ev/F+5xfz/QN2vjHqJJ8eawngvAXHf9n6+1IsKMDc+9lVpsxkWq0PMiZdlIW5kw6zn9QjYlKZk1iBsWOGjwVmq/QlufazYwe3Fm24eedEmzpYIzh8CrDNCAhMCy3Eakl4BwmZinrteJiZGaJHovhwtznaCTGLHvpzyhz4pS1RgShnISPBN0qdva2iAh2M6VcHGbGNhLpRazkBAyVicn8tkiNHwjArIKCcEg5gzDHUkdu4i4DglBuQita+oEmZaWVNER5xAzQnci/blW3myQ62y02QSnnLI+QdwISLTahFYoLKeHIFORH3tTWhfEhLD1IuTFj50PiMOs2RwQ8FUcpaUxtd+r+es3o4GA1MvFijTmxnxq8QRmjPn0wpnGjjrOIZep/kj07KVaoL53nhaaqSaCHGC1vF2Kjg1JZrVcKEHA3+ZTC7f/c9LV6mgMMOb7Y1LFPw29mj8GkpOOTfSDCQ09iaHHdT034Rb+BfhkkB6UmEg8GXgy3UUT3Gkbjb7CqOTK0uVFg23VBJlzKnMqo7ZqJHEUapHUrcgdy/IOlYu+tImr8MTI3agKRh9qFH4BHCtrsZl3NEcAAAAASUVORK5CYII=";  
 
     swiperSlides.forEach((slider, index) => {  
-      slider.addEventListener('click', () => { 
-        // think about active class way of doing 
-       
+      // let count = 0;  
+
+      slider.addEventListener('click', () => {
+        // count++;  
+
+        // if(count % 2 == 0) {
+        //   sliderImg[index].src = `${imgSrcCheck}`  
+        // }
+
+        setIsChosen(true); 
         sliderImg.forEach(btn => btn.src = `${imgCircle}`);  
         sliderDes.forEach(slider => slider.style.bottom = "-400px")
         sliderImg[index].src = `${imgSrcCheck}`  
-        sliderDes[index].style.bottom = "0"; 
+        sliderDes[index].style.bottom = "0";  
+        
       }) 
     })  
 
-  }, []) 
+  }, [isChosen == true, data.data != null])    
+
 
   return (
     <>
@@ -78,12 +88,11 @@ function Event() {
         <h2 className={styles.event_title}>Мероприятия</h2>
           <div className={styles.container}>  
           <Swiper  className="slider" {...settings}> 
-          {
-            [1,2,3,4,5].map((value, key) => {
+          {data.data && data.data.map((value, key) => {
               return (
                 <SwiperSlide key={key} data-index={key}> 
                   <div  className={styles.slider_img}>
-                    <img src={Slider} className={styles.img_of_img}/>
+                    <img src={value.image} className={styles.img_of_img}/>
                     <div className={styles.circle}>   
                     
                     {/* {isCheck ? <img src={Check} className="img_change"/>  
@@ -96,7 +105,7 @@ function Event() {
 
                     {/* <img src={Slider} className={styles.img_pos}/>   */}
                     <div className={styles.event_des} id="eventdes">
-                      <h3 className={styles.event_des_title} >Свадьба</h3>
+                      <h3 className={styles.event_des_title} >{value.name}</h3>
                     </div>
                     </div>
                   </SwiperSlide> 
@@ -105,8 +114,8 @@ function Event() {
           }
           </Swiper> 
         </div> 
-    </div>  
-    <div className={styles.event}>
+    </div> 
+    {isChosen ?    <div className={styles.event}>
         <h2 className={styles.event_title}>Мероприятия</h2>
           <div className={styles.container}>  
           <Swiper  className="slider" {...settings}> 
@@ -137,7 +146,7 @@ function Event() {
           }
           </Swiper> 
         </div> 
-    </div> 
+    </div> : null}
     </>
     
   )
