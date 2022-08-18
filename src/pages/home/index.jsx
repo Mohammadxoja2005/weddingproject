@@ -5,7 +5,6 @@ import Gallery from "../../components/gallery";
 import Event from "../../components/event";
 import Service from "../../components/service";
 import Footer from "../../components/footer";
-import axios from "axios";
 import Modal from "../../components/modal"; 
 import InputMask from 'react-input-mask'; 
 
@@ -54,9 +53,9 @@ function Home() {
    
     const submit = () => {  
 
-      if(username == '' || phone == '' || cite == '' || wedding_date == '') {
-        return alert('should be filled')
-      }
+      // if(username == '' || phone == '' || cite == '' || wedding_date == '') {
+      //   return alert('should be filled')
+      // }
 
       const data = {
         username: username, 
@@ -145,22 +144,6 @@ function Home() {
         return <Check />;
     }
   }
-
-  // const data =  {
-  //   username: "Xoja",
-  //   phone: "566548941",
-  //   cite: "Toshkent",
-  //   wedding_date: "2022-08-23"
-  // }
-
-  //   axios.post('http://172.105.76.9:8000/accounts/register/', {
-  //     username: "Xoja",
-  //     phone: "566548941",
-  //     cite: "Toshkent",
-  //     wedding_date: "2022-08-23"
-  //   }).then(res => {
-  //     console.log(res.data)
-  //   })
 
   return (
     <div className={styles.container}>

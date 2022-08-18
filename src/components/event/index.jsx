@@ -115,7 +115,7 @@ function Event() {
           </Swiper> 
         </div> 
     </div> 
-    {isChosen ?    <div className={styles.event}>
+       <div className={styles.event}>
         <h2 className={styles.event_title}>Мероприятия</h2>
           <div className={styles.container}>  
           <Swiper  className="slider" {...settings}> 
@@ -146,7 +146,7 @@ function Event() {
           }
           </Swiper> 
         </div> 
-    </div> : null}
+    </div>
     </>
     
   )
