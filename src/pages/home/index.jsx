@@ -52,7 +52,12 @@ function Home() {
     const [cite, setCite] = useState(''); 
     const [wedding_date, setWedding_date] = useState('');  
    
-    const submit = () => {
+    const submit = () => {  
+
+      if(username == '' || phone == '' || cite == '' || wedding_date == '') {
+        return alert('should be filled')
+      }
+
       const data = {
         username: username, 
         phone: phone, 
